@@ -3,8 +3,10 @@ module.exports = function longestConsecutiveLength(array) {
   let step = new Set(array);
   let count = 1;
   let max = 1;
-     
-    step.forEach(function(value, value2, set){
+     if (array.length==0) {
+       return 0;
+     }
+    /*step.forEach(function(value, value2, set){
       //alert(value1+" "+value2);
       if ((step.has(value-1))||step.has(value+1)) {
         
@@ -13,7 +15,22 @@ module.exports = function longestConsecutiveLength(array) {
         if (count>max) {
           max = count-1;
         }
+    });*/
+
+    step.forEach(function(value, value2, set){
+      
+      let n=value-1
+        while(step.has(n)) {
+        count++;
+        n--;
+        }
+
+      if (count>max) {
+        max = count;
+      }
+     count = 1;
     });
-return max;
+
+      return max;
 
 }
